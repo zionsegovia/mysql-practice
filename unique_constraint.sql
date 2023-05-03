@@ -1,8 +1,6 @@
 # the UNIQUE aspect makes it so that
 # there can not be duplicates added to the table
 
-
-
 # create a table implementing the UNIQUE aspect
 
 CREATE TABLE products(
@@ -31,3 +29,17 @@ SELECT * FROM products
 # an error if there was another item added with the name fries
 # as we applied UNIQUE to the product name and there is already
 # a fries in the table
+
+
+# **NOT NULL CONSTRAINT**
+CREATE TABLE products(
+                         product_id INT,
+                         product_name VARCHAR(25) UNIQUE ,
+                         price DECIMAL(4,2) NOT NULL
+);
+
+# to add the not null constraint to a table that already exists
+ALTER TABLE products
+MODIFY price DECIMAL(4,2) NOT NULL;
+
+
