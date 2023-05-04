@@ -66,3 +66,32 @@ ALTER TABLE employees
 # to delete a check
 ALTER TABLE employees
 DROP CHECK chk_hourly_pay;
+
+# **DEFAULT CONSTRAINT1**
+# declare parts of the data to have a value named default
+
+# create table implementing the DEFAULT aspect
+
+USE mydb;
+
+CREATE TABLE products(
+                         product_id INT,
+                         product_name VARCHAR(25),
+                         price DECIMAL(4,2) DEFAULT 0
+);
+
+# add the DEFAULT constraint to a table that already exists
+
+
+ALTER TABLE products
+    ALTER price SET DEFAULT 0
+
+# adding data to the table that is using the set DEFAULT value
+# the price is not needed when inserting these as it is using the DEFAULT value of 0
+INSERT INTO products (product_id, product_name)
+VALUES (104, "napkin"),
+       (105,"straw"),
+       (106,"fork"),
+       (107,"spoon");
+
+SELECT * FROM products;
