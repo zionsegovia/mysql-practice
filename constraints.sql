@@ -42,4 +42,27 @@ CREATE TABLE products(
 ALTER TABLE products
 MODIFY price DECIMAL(4,2) NOT NULL;
 
+# **CHECK CONSTRAINT**
+# the check constraint will only allow you to add new data to the table
+# if the data meets whatever the criteria is for the CHECK
 
+# create table that is applying the CHECK restraint to hourly_pay
+USE mydb;
+
+CREATE TABLE employees (
+                           employee_id INT,
+                           first_name VARCHAR(50),
+                           last_name VARCHAR(50),
+                           hourly_pay DECIMAL(5,2),
+                           hire_date DATE,
+                           CONSTRAINT chk_hourly_pay CHECK ( hourly_pay >= 10.00 )
+);
+
+# add CHECK constraint to table that already exists
+
+ALTER TABLE employees
+    ADD CONSTRAINT chk_hourly_pay CHECK(hourly_pay >= 10.00);
+
+# to delete a check
+ALTER TABLE employees
+DROP CHECK chk_hourly_pay;
